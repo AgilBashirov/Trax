@@ -1,0 +1,36 @@
+﻿@model List<Process>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<section id="our-process" class="padding bgdark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+                <div class="heading-title whitecolor wow fadeInUp" data-wow-delay="300ms">
+                    <span>Quisque tellus risus, adipisci </span>
+                    <h2 class="font-normal">Our Work Process </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="process-wrapp">
+                @{
+                    int i = 1;
+                    foreach (var item in Model)
+                    {
+                        <li class="whitecolor wow fadeIn" data-wow-delay="300ms">
+                            <span class="pro-step bottom20">@i</span>
+                            <p class="fontbold bottom25">@item.Title</p>
+                            <p>@item.SubTitle</p>
+                        </li>
+
+                        i++;
+                    };
+                }
+
+            </ul>
+        </div>
+    </div>
+</section>
+

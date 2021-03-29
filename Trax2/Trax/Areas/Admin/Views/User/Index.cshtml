@@ -1,0 +1,63 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-3 text-gray-800 ml-2">Users</h1>
+
+    <!-- Blogs -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-dark text-xl-left" colspan="6">Users</th>
+                            <td class="d-flex justify-content-end pr-4" rowspan="3"><a asp-area="admin" asp-controller="user" asp-action="Create" class="btn btn-success ">Create</a></td>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Is team member?</th>
+                            <th>Gender</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @{int i = 0; }
+                        @foreach (var blog in Model)
+                        {
+                            i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                <img src="~/Uploads/Images/@blog.Image" width="50px" alt="user image" />
+                            </td>
+                            <td>@blog.Name</td>
+                            <td>@blog.Position</td>
+                            <td>@(blog.IsTeamMember==true ? "Member":"Not member")</td>
+                            <td>@(blog.IsTeamMember==true ? "Male":"Female")</td>
+
+                            <td>
+                                <a asp-area="admin" asp-controller="user" asp-action="Update" asp-route-Id="@blog.Id" class="btn btn-primary">Update</a>
+                                <a asp-area="admin" asp-controller="user" asp-action="Delete" asp-route-Id="@blog.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- /.container-fluid -->

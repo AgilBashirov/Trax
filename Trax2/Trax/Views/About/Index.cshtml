@@ -1,0 +1,124 @@
+﻿@model VmAbout
+@{
+    ViewData["Title"] = "Index";
+    VmBreadCrum vmBreadCrum = new VmBreadCrum() { Desc = "About Our Company", Page = "About" };
+}
+
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header about-header parallax section-nav-smooth">
+    <div class="overlay overlay-dark opacity-7"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="page-titles whitecolor text-center padding_top padding_bottom">
+                    @foreach (var item in Model.Universals.Where(u => u.Section == "AboutHeader"))
+                    {
+                        <h2 class="font-xlight">@item.UpTitle</h2>
+                        <h2 class="font-bold">@item.Title</h2>
+                        <h2 class="font-xlight">@item.Subtitle</h2>
+                        <h3 class="font-light pt-2">@item.Desc</h3>
+                    }
+                </div>
+            </div>
+        </div>
+        <partial name="_BreadCrumPartial" model="vmBreadCrum" />
+    </div>
+</section>
+<!--Page Header ends -->
+<!-- About us -->
+<section id="aboutus" class="padding_top padding_bottom">
+    <div class="container aboutus">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 padding_bottom_half">
+                <div class="image"><img alt="SEO" src="http://themesindustry.com/html/trax-2020/images/aboutus.png"></div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-6 padding_bottom_half text-center text-md-left">
+                <h2 class="darkcolor font-normal bottom30">Lets take your <span class="defaultcolor">Business</span> to Next Level</h2>
+                <p class="bottom35">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mauris arcu, lobortis id interdum vitae, interdum eget elit. Curabitur quis urna nulla. Suspendisse potenti. Duis suscipit ultrices maximus. </p>
+                <a href="#our-team" class="button btnsecondary gradient-btn pagescroll">Learn More</a>
+            </div>
+        </div>
+        <div class="row  align-items-center">
+            @foreach (var item in Model.Universals.Where(u => u.Section == "SkillSets"))
+            {
+                <div class="col-lg-5  col-md-6 padding_top_half text-center text-md-left">
+                    <h2 class="darkcolor font-normal bottom30">@item.Subtitle<span class="defaultcolor">@item.Title</span> </h2>
+                    <p class="bottom35">@item.Desc</p>
+                </div>
+
+            }
+            <div class="col-lg-6 offset-lg-1 col-md-6 padding_top_half">
+                <div class="progress-bars">
+                    @foreach (var item in Model.SkillSets)
+                    {
+                        <div class="progress">
+                            <p>@item.Name</p>
+                            <div class="progress-bar gradient-bg" data-value="@item.Persentage">
+                                <span class="gradient-bg whitecolor">@item.Persentage%</span>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About us ends -->
+<!-- WOrk Process-->
+<partial name="_ProcessPartial" model="@Model.Processes" />
+<!--WOrk Process ends-->
+<!-- Our Team-->
+<section id="our-team" class="padding_top half-section-alt teams-border">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Universals.Where(u => u.Section == "Team"))
+            {
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="heading-title wow fadeInUp text-center text-md-left" data-wow-delay="300ms">
+                        <span class="defaultcolor">@item.UpTitle</span>
+                        <h2 class="darkcolor bottom30 font-normal">@item.Title</h2>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-left">
+                    <p class="heading_space">@item.Desc</p>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ourteam-slider" class="owl-carousel">
+                    @foreach (var user in Model.Users)
+                    {
+                        <div class="item">
+                            <div class="team-box">
+                                <div class="image">
+                                    <img src="~/Uploads/Images/@user.Image" alt="">
+                                </div>
+                                <div class="team-content">
+                                    <h4 class="darkcolor">@user.Name</h4>
+                                    <p>@user.Position</p>
+                                    <ul class="social-icons-simple">
+                                        @foreach (var social in Model.Socials.Where(s => s.SocialToUsers.Any(a => a.UserId == user.Id)))
+                                        {
+                                            <li><a href="javascript:void(0)"><i class="@social.Icon"></i> </a> </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Team ends-->
+<!-- Partners-->
+<partial name="_PartnersPartial" model="@Model.Partners" />
+
+<!--ViewComponentin chagirilishi-->
+@*@await Component.InvokeAsync("Partner");*@
+
+<!-- Partners ends-->

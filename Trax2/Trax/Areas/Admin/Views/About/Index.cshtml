@@ -1,0 +1,101 @@
+﻿@model VmAbout
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-3 text-gray-800 ml-2">About Page</h1>
+
+    <!-- SkillSets -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <th class="text-dark text-xl-left" colspan="2">SkillSets</th>
+                    <td class="d-flex justify-content-end pr-4"><a asp-area="admin" asp-controller="about" asp-action="CreateSkillSet" class="btn btn-success ">Create</a></td>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SkillSets)
+                        {
+                            <tr>
+                                <th>@item.Name</th>
+                                <th>@item.Persentage</th>
+                                <td class="d-flex justify-content-end">
+                                    <a asp-area="admin" asp-controller="about" asp-action="UpdateSkillSet" asp-route-Id="@item.Id" class="btn btn-primary mr-2">Update</a>
+                                    <a asp-area="admin" asp-controller="about" asp-action="DeleteSkillSet" asp-route-Id="@item.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <th class="text-dark text-xl-left" colspan="2">Process</th>
+                        <th class="d-flex justify-content-end pr-4"><a asp-area="admin" asp-controller="about" asp-action="CreateProcess" class="btn btn-success ">Create</a></th>
+                    <thead>
+                    <tbody>
+                        @foreach (var item in Model.Processes)
+                        {
+                            <tr>
+                                <th>@item.Title</th>
+                                <th>@item.SubTitle</th>
+                                <td class="d-flex justify-content-end">
+                                    <a asp-area="admin" asp-controller="about" asp-action="UpdateProcess" asp-route-Id="@item.Id" class="btn btn-primary mr-2">Update</a>
+                                    <a asp-area="admin" asp-controller="about" asp-action="DeleteProcess" asp-route-Id="@item.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Experts -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <th class="text-dark text-xl-left" colspan="3">Our Experts</th>
+                    <td class="d-flex justify-content-end pr-4"><a asp-area="admin" asp-controller="about" asp-action="CreateUser" class="btn btn-success ">Create</a></td>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users)
+                        {
+                        <tr>
+                            <th>@(item.Name != null? item.Name:"")</th>
+                            <th>@(item.Position != null? item.Position:"")</th>
+                            <th>
+                                @if (item.Image != null)
+                                {
+                                    <img width="100px" src="~/Uploads/Images/@item.Image" alt="user image" />
+                                }
+                            </th>
+                            <td rowspan="2" class="d-flex justify-content-end">
+                                <a asp-area="admin" asp-controller="about" asp-action="UpdateUser" asp-route-Id="@item.Id" class="btn btn-primary mr-2">Update</a>
+                                <a asp-area="admin" asp-controller="about" asp-action="DeleteUser" asp-route-Id="@item.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

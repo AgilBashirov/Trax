@@ -1,0 +1,113 @@
+﻿@model VmContact
+@{
+    ViewData["Title"] = "Index";
+    VmBreadCrum vmBreadCrum = new VmBreadCrum() { Desc = "Contact Us", Page = "Contact Us" };
+}
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header contact-header section-nav-smooth parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="page-titles whitecolor text-center padding">
+                    @foreach (var item in Model.Universals.Where(u => u.Section == "ContactHeader"))
+                    {
+                        <h2 class="font-bold">@item.UpTitle</h2>
+                        <h3 class="font-light py-3">@item.Desc</h3>
+                    }
+                </div>
+            </div>
+            <partial name="_BreadCrumPartial" model="vmBreadCrum" />
+
+        </div>
+</section>
+<!--Page Header ends -->
+<!-- Contact US -->
+<section id="stayconnect1" class="bglight position-relative padding noshadow">
+    <div class="container whitebox">
+        <div class="widget py-5">
+            <div class="row">
+                <div class="col-md-12 text-center wow fadeIn mt-n3" data-wow-delay="300ms">
+                    <h2 class="heading bottom30 darkcolor font-light2 pt-1">
+                        <span class="font-normal">Contact</span> Us
+                        <span class="divider-center"></span>
+                    </h2>
+                    <div class="col-md-8 offset-md-2 bottom35">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 order-sm-2">
+                    <div class="contact-meta px-2 text-center text-md-left">
+                        <div class="heading-title">
+                            <span class="defaultcolor mb-3">@Model.Contact.Title</span>
+                            <h2 class="darkcolor font-normal mb-4"><span class="d-none d-md-inline-block">@Model.Contact.SubTitle</h2>
+                        </div>
+                        <p class="bottom10">@Model.Contact.Address</p>
+                        <p class="bottom10">@Model.Contact.Phone</p>
+                        <p class="bottom10"><a href="mailto:@Model.Contact.Email">@Model.Contact.Email</a></p>
+                        <p class="bottom10">@Model.Contact.WorkTime</p>
+                        <ul class="social-icons mt-4 mb-4 mb-sm-0 wow fadeInUp" data-wow-delay="300ms">
+                            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i> </a> </li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i> </a> </li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+                            <li><a href="javascript:void(0)"><i class="fab fa-whatsapp"></i> </a> </li>
+                            <li><a href="javascript:void(0)"><i class="far fa-envelope"></i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="heading-title  wow fadeInUp" data-wow-delay="300ms">
+                        <form class="getin_form wow fadeInUp" data-wow-delay="400ms" onsubmit="return false;">
+                            <div class="row px-2">
+                                <div class="col-md-12 col-sm-12" id="result1"></div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name1" class="d-none"></label>
+                                        <input class="form-control" id="name1" type="text" placeholder="Name:" required name="userName">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email1" class="d-none"></label>
+                                        <input class="form-control" type="email" id="email1" placeholder="Email:" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="message1" class="d-none"></label>
+                                        <textarea class="form-control" id="message1" placeholder="Message:" required name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <button type="submit" id="submit_btn1" class="button gradient-btn w-100">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Address)
+            {
+                <div class="col-lg-3 col-md-3">
+                    <div class="widget text-center top60 w-100">
+                        <div class="contact-box">
+                            <span class="icon-contact defaultcolor"><i class="@item.Icon"></i></span>
+                            <p class="bottom0"><a href="tel:@item.Info1">@item.Info1</a></p>
+                            <p class="d-block"><a href="tel:@item.Info2">@item.Info2</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!-- Contact US ends -->
+<!-- map -->
+<div class="w-100">
+    <div id="map" class="full-map"></div>
+</div>
+<!-- map end -->

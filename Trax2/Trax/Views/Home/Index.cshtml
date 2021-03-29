@@ -1,0 +1,373 @@
+﻿@model VmHome
+@{
+    ViewData["Title"] = "Index";
+}
+<!--Main Slider-->
+<section id="main-banner-area" class="position-relative">
+    <div id="revo_main_wrapper" class="rev_slider_wrapper fullwidthbanner-container m-0 p-0 bg-dark" data-alias="classic4export" data-source="gallery">
+        <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
+        <div id="vertical-bullets" class="rev_slider fullwidthabanner white vertical-tpb" data-version="5.4.1">
+            <ul>
+                @foreach (var item in Model.Sliders)
+                {
+                    <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-easein="Power100.easeIn" data-easeout="Power100.easeOut" data-masterspeed="2000" data-fsmasterspeed="1500" data-param1="01">
+                        <!-- MAIN IMAGE -->
+                        <div class="overlay overlay-dark opacity-5"></div>
+                        <img src="~/images/@item.Image" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption tp-resizeme"
+                             data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                             data-y="['middle','middle','middle','middle']" data-voffset="['-30','-30','-30','-30']"
+                             data-width="none" data-height="none" data-type="text"
+                             data-textAlign="['center','center','center','center']"
+                             data-responsive_offset="on" data-start="1000"
+                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                            <h1 class="text-capitalize font-xlight whitecolor text-center">@item.UpTitle</h1>
+                        </div>
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption tp-resizeme"
+                             data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                             data-y="['middle','middle','middle','middle']" data-voffset="['30','30','30','30']"
+                             data-width="none" data-height="none" data-type="text"
+                             data-textAlign="['center','center','center','center']"
+                             data-responsive_offset="on" data-start="1000"
+                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                            <h1 class="text-capitalize font-bold whitecolor text-center">@item.Title</h1>
+                        </div>
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption tp-resizeme"
+                             data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                             data-y="['middle','middle','middle','middle']" data-voffset="['90','90','90','90']"
+                             data-width="none" data-height="none" data-type="text"
+                             data-textAlign="['center','center','center','center']"
+                             data-responsive_offset="on" data-start="1500"
+                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                            <h1 class="text-capitalize font-xlight whitecolor text-center">@item.SubTitle</h1>
+                        </div>
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption tp-resizeme"
+                             data-x="['left','left','center','center']" data-hoffset="['0','0','0','0']"
+                             data-y="['middle','middle','middle','middle']" data-voffset="['130','130','130','130']"
+                             data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                             data-textAlign="['center','center','center','center']"
+                             data-responsive_offset="on" data-start="2000"
+                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'>
+                            <h4 class="whitecolor font-xlight text-center">@item.Desc</h4>
+                        </div>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div>
+    <ul class="social-icons-simple revicon white">
+        <li class="d-table"><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a> </li>
+        <li class="d-table"><a href="javascript:void(0)"><i class="fab fa-twitter"></i> </a> </li>
+        <li class="d-table"><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i> </a> </li>
+        <li class="d-table"><a href="javascript:void(0)"><i class="fab fa-instagram"></i> </a> </li>
+    </ul>
+</section>
+<!--Main Slider ends -->
+<!--Some Feature -->
+<section id="our-feature" class="single-feature padding">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            @foreach (var item in Model.Universals.Where(u => u.Section == "Business"))
+            {
+                <div class="col-lg-6 col-md-7 col-sm-7 text-sm-left text-center wow fadeInLeft" data-wow-delay="300ms">
+                    <div class="heading-title mb-4">
+                        <h2 class="darkcolor font-normal bottom30">@item.UpTitle<span class="defaultcolor">@item.Title</span>@item.Subtitle</h2>
+                    </div>
+                    <p class="bottom35">@item.Desc</p>
+                    <a href="#our-team" class="button btnsecondary gradient-btn pagescroll mb-sm-0 mb-4">Learn More</a>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-5 col-sm-5 wow fadeInRight" data-wow-delay="300ms">
+                    <div class="image"><img alt="SEO" src="~/images/@item.Image"></div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!--Some Feature ends-->
+<!-- WOrk Process-->
+<partial name="_ProcessPartial" model="@Model.Processes" />
+<!--WOrk Process ends-->
+<!-- Mobile Apps -->
+<section id="our-apps" class="padding">
+    <div class="container">
+        @foreach (var item in Model.Universals.Where(u => u.Section == "Mobile"))
+        {
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-7 col-sm-12">
+                    <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                        <span class="defaultcolor text-center text-md-left">@item.UpTitle</span>
+                        <h2 class="darkcolor font-normal text-center text-md-left">@item.Title</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5 col-sm-12">
+                    <p class="text-center text-md-left">@item.Desc</p>
+                </div>
+            </div>
+
+        }
+        <div class="row d-flex align-items-center" id="app-feature">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="text-center text-md-right">
+                    @foreach (var item in Model.Mobiles.Take(2))
+                    {
+                        <div class="feature-item mt-3 wow fadeInLeft" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
+                            <div class="icon"><i class="@item.Icon"></i></div>
+                            <div class="text">
+                                <h3 class="bottom15">
+                                    <span class="d-inline-block">@item.Title</span>
+                                </h3>
+                                <p>@item.Desc</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="app-image top30">
+                    <div class="app-slider-lock-btn"></div>
+                    <div class="app-slider-lock">
+                        <img src="~/images/iphone-slide-lock.jpg" alt="">
+                    </div>
+                    <div id="app-slider" class="owl-carousel owl-theme owl-loaded owl-drag">
+
+
+
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage" style="transform: translate3d(-470px, 0px, 0px); transition: all 0s ease 0s; width: 1645px;">
+                                <div class="owl-item cloned" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide2.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item cloned" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide3.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item active" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide1.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide2.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide3.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item cloned" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide1.jpg" alt="">
+                                    </div>
+                                </div><div class="owl-item cloned" style="width: 235px;">
+                                    <div class="item">
+                                        <img src="~/images/iphone-slide2.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div>
+                    </div>
+                    <img src="~/images/iphone.png" alt="image">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="text-center text-md-left">
+                    @foreach (var item in Model.Mobiles.Skip(2))
+                    {
+                        <div class="feature-item mt-3 wow fadeInLeft" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
+                            <div class="icon"><i class="@item.Icon"></i></div>
+                            <div class="text">
+                                <h3 class="bottom15">
+                                    <span class="d-inline-block">@item.Title</span>
+                                </h3>
+                                <p>@item.Desc</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Mobile Apps ends-->
+<!-- Counters -->
+<section id="bg-counters" class="padding bg-counters parallax">
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-4 col-md-4 col-sm-4 bottom10">
+                <div class="counters whitecolor  top10 bottom10">
+                    <span class="count_nums font-light" data-to="@Model.Counter.StartNum" data-speed="2500"> </span>
+                </div>
+                <h3 class="font-light whitecolor top20">@Model.Counter.StartTitle</h3>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="whitecolor top20 bottom20 font-light title">@Model.Counter.Desc</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 bottom10">
+                <div class="counters whitecolor top10 bottom10">
+                    <span class="count_nums font-light" data-to="@Model.Counter.EndNum" data-speed="2500"> </span>
+                </div>
+                <h3 class="font-light whitecolor top20">@Model.Counter.EndTitle</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Counters ends-->
+<!-- Our Team-->
+<section id="our-team" class="padding_top half-section-alt teams-border">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Universals.Where(u => u.Section == "Team"))
+            {
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="heading-title wow fadeInUp text-center text-md-left" data-wow-delay="300ms">
+                        <span class="defaultcolor">@item.UpTitle</span>
+                        <h2 class="darkcolor bottom30 font-normal">@item.Title</h2>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center text-md-left">
+                    <p class="heading_space">@item.Desc</p>
+                </div>
+            }
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ourteam-slider" class="owl-carousel">
+                    @foreach (var user in Model.Users)
+                    {
+                        <div class="item">
+                            <div class="team-box">
+                                <div class="image">
+                                    <img src="images/@user.Image" alt="">
+                                </div>
+                                <div class="team-content">
+                                    <h4 class="darkcolor">@user.Name</h4>
+                                    <p>@user.Position</p>
+                                    <ul class="social-icons-simple">
+                                        @foreach (var social in Model.Socials.Where(s => s.SocialToUsers.Any(a => a.UserId == user.Id)))
+                                        {
+                                            <li><a href="javascript:void(0)"><i class="@social.Icon"></i> </a> </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Team ends-->
+<!--Pricing Start-->
+<section id="pricing" class="padding bglight">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Universals.Where(u => u.Section == "Pricing"))
+            {
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="heading-title darkcolor wow fadeInUp" data-wow-delay="300ms">
+                        <span class="defaultcolor">@item.UpTitle</span>
+                        <h2 class="font-normal bottom40">@item.Title</h2>
+                    </div>
+                </div>
+            }
+            <div class="col-12 text-center ">
+                <div class="price-toggle-wrapper heading_space">
+                    <span class="Pricing-toggle-button month active">Monthly</span>
+                    <span class="Pricing-toggle-button year">Yearly</span>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel owl-theme no-dots" id="price-slider">
+            @foreach (var item in Model.Pricings.Take(3))
+            {
+                <div class="item">
+                    <div class="col-md-12">
+                        <div class="pricing-item wow fadeInUp animated sale" data-wow-delay="300ms" data-sale="60">
+                            <h3 class="font-light darkcolor">@item.Title</h3>
+                            <p class="bottom30">@item.Subtitle</p>
+                            <div class="pricing-price darkcolor"><span class="pricing-currency">$@Math.Round(item.Price,2)</span> /<span class="pricing-duration">month</span></div>
+                            <ul class="pricing-list">
+                                @foreach (var item2 in Model.PricingTables)
+                                {
+                                    <li class="@item2.Icon">@item2.Info</li>
+                                }
+                            </ul>
+                            <a class="button" href="javascript:void(0)">Choose plan</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!--Pricing ends-->
+<!-- Partners-->
+<partial name="_PartnersPartial" model="@Model.Partners" />
+<!-- Partners ends-->
+<!-- Testimonials -->
+<section id="our-testimonial" class="bglight padding_bottom">
+    <div class="parallax page-header testimonial-bg">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Universals.Where(u => u.Section == "PeopleSays"))
+                {
+                    <div class="col-lg-6 offset-lg-6 col-md-12 text-center text-lg-right">
+                        <div class="heading-title wow fadeInUp padding_testi" data-wow-delay="300ms">
+                            <span class="whitecolor">@item.UpTitle</span>
+                            <h2 class="whitecolor font-normal">@item.Title</h2>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="owl-carousel" id="testimonial-slider">
+            @foreach (var item in Model.PeopleSays)
+            {
+                <div class="item testi-box">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-12 text-center">
+                            <div class="testimonial-round d-inline-block">
+                                <img src="~/images/@item.Image" alt="">
+                            </div>
+                            <h4 class="defaultcolor font-light top15"><a href="#.">@item.Name</a></h4>
+                            <p>@item.Company, @item.Country</p>
+                        </div>
+                        <div class="col-lg-6 offset-lg-2 col-md-10 offset-md-1 text-lg-left text-center">
+                            <p class="bottom15 top90">@item.Content</p>
+                            <span class="d-inline-block test-star">
+                                @for (int i = 0; i < item.StarScore; i++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+                                @if (item.StarScore < 5)
+                                {
+                                    int length = 5 - item.StarScore;
+                                    for (int i = 0; i < length; i++)
+                                    {
+                                        <i class="far fa-star"></i>
+                                    }
+
+                                }
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            }
+           
+        </div>
+    </div>
+</section>
+<!--Testimonials Ends-->

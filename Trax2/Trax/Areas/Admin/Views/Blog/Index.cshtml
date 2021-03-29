@@ -1,0 +1,70 @@
+﻿@model VmBlog
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-3 text-gray-800 ml-2">Blog Page</h1>
+
+    <!-- Blogs -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-dark text-xl-left" colspan="7">Blogs</th>
+                            <td class="d-flex justify-content-end pr-4" rowspan="3"><a asp-area="admin" asp-controller="blog" asp-action="Create" class="btn btn-success ">Create</a></td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Tags</th>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in Model.Blogs)
+                        {
+                        <tr>
+                            <td>@blog.Title</td>
+                            <td class="col-2">@(blog.Content.Length > 100 ? blog.Content.Substring(0,100) + "..." : blog.Content)</td>
+                            <td>
+                                <img src="~/Uploads/Images/@blog.Image" width="50px" alt="user image" />
+                            </td>
+                            <td>@blog.Category.Name</td>
+                            <td>
+                                @foreach (var tag in blog.TagToBlogs)
+                                {
+                                    @(tag.Tag.Name + " ")
+                                }
+                            </td>
+                            <td>@blog.User.Name</td>
+                            <td>@blog.AddedDate.ToString("dd MMMM yyyy")</td>
+                            <td>
+                                <a asp-area="admin" asp-controller="blog" asp-action="Update" asp-route-Id="@blog.Id" class="btn btn-primary mb-2">Update</a>
+                                <a asp-area="admin" asp-controller="blog" asp-action="Delete" asp-route-Id="@blog.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- /.container-fluid -->

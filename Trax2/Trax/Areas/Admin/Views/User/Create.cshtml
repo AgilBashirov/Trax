@@ -1,0 +1,63 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Create User</h2>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-area="admin" asp-controller="user" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="Name" asp-for="@Model.Name">
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="Position">Position</label>
+                    <input type="text" class="form-control" id="Position" asp-for="@Model.Position">
+                    <span asp-validation-for="@Model.Position" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <br />
+                    <input type="radio" id="male" value="true" asp-for="@Model.Gender">
+                    <label for="male">Male</label>
+                    <br />
+                    <input type="radio" id="female" value="false" asp-for="@Model.Gender">
+                    <label for="female">Female</label>
+
+                    <span asp-validation-for="@Model.Gender" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="IsTeamMember">Is Team Member?</label>
+                    <br />
+                    <input id="IsTeamMember" asp-for="@Model.IsTeamMember">
+                    <span asp-validation-for="@Model.IsTeamMember" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input class="form-control" id="image" asp-for="@Model.ImageFile">
+                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,58 @@
+﻿@model List<Partner>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-3 text-gray-800 ml-2">Partners</h1>
+
+    <!-- Blogs -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-dark text-xl-left" colspan="3">Partners</th>
+                            <td class="d-flex justify-content-end pr-4"><a asp-area="admin" asp-controller="partner" asp-action="Create" class="btn btn-success">Create</a></td>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Link</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @{ int i = 0; }
+                        @foreach (var partner in Model)
+                        {
+                            i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                <img src="~/Uploads/Images/@partner.Image" height="50px" alt="image" />
+                            </td>
+                            <td>@partner.Link</td>
+
+                            <td>
+                                <a asp-area="admin" asp-controller="partner" asp-action="Update" asp-route-Id="@partner.Id" class="btn btn-primary">Update</a>
+                                <a asp-area="admin" asp-controller="partner" asp-action="Delete" asp-route-Id="@partner.Id" onclick="return confirm('Are you sure?')" class=" btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- /.container-fluid -->

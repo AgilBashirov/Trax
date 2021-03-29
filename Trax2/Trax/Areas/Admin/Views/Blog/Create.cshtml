@@ -1,0 +1,56 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Create Blog</h2>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-area="admin" asp-controller="blog" asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" asp-for="@Model.Title">
+                    <span asp-validation-for="@Model.Title" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea type="text" class="form-control" id="content" asp-for="@Model.Content"></textarea>
+                    <span asp-validation-for="@Model.Content" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(ViewBag.Categories, "Id","Name"))">
+                    </select>
+                    <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="TagIds">Tags</label>
+                    <select id="TagIds" class="form-control multi-select" multiple asp-for="@Model.TagIds" asp-items="@(new SelectList(ViewBag.Tags, "Id","Name"))">
+                    </select>
+                    <span asp-validation-for="@Model.TagIds" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input class="form-control" id="image" asp-for="@Model.ImageFile">
+                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+

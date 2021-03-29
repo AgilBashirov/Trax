@@ -1,0 +1,25 @@
+﻿@model List<Partner>
+@{
+    Layout = null;
+}
+
+<!-- Partners-->
+<section id="our-partners" class="padding_top padding_bottom bglight">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h2 class="d-none">Carousel Is Here</h2>
+                <div id="partners-slider" class="owl-carousel">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <a href="@item.Link" target="_blank" class="logo-item"><img alt="image" src="~/Uploads/Images/@item.Image"></a>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Partners ends-->

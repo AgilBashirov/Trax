@@ -1,0 +1,41 @@
+﻿@model User
+@{
+    ViewData["Title"] = "CreateUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Process</h2>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-area="admin" asp-controller="about" asp-action="CreateUser" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" asp-for="@Model.Name">
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="position">Position</label>
+                    <input type="text" class="form-control" id="position" asp-for="@Model.Position">
+                    <span asp-validation-for="@Model.Position" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label for="ImageFile">Image</label>
+                    <input class="form-control" id="ImageFile" asp-for="@Model.ImageFile">
+                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+

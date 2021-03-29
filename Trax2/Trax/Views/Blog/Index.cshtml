@@ -1,0 +1,71 @@
+﻿@model VmBlog
+@{
+    ViewData["Title"] = "Index";
+    VmBreadCrum vmBreadCrum = new VmBreadCrum() { Desc = "Blogs", Page = "Blog" };
+}
+
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header blog-header parallax section-nav-smooth">
+    <div class="overlay overlay-dark opacity-7 z-index-1"></div>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 offset-lg-2">
+                <div class="page-titles whitecolor text-center padding_top padding_bottom">
+                    @foreach (var item in Model.Universals.Where(u => u.Section == "BlogInHeader"))
+                    {
+                        <h2 class="font-xlight">@item.UpTitle</h2>
+                        <h2 class="font-bold">@item.Title</h2>
+                        <h2 class="font-xlight">@item.Subtitle</h2>
+                        <h3 class="font-light pt-2">@item.Desc</h3>
+                    }
+                </div>
+            </div>
+        </div>
+        <partial name="_BreadCrumPartial" model="vmBreadCrum" />
+
+    </div>
+</section>
+<!--Page Header ends -->
+
+<!-- Our Blogs -->
+<section id="our-blog" class="bglight padding">
+    <div class="container">
+        <div id="blog-measonry" class="cbp">
+            @foreach (var blog in Model.Blogs)
+            {
+                <div class="cbp-item">
+                    <div class="news_item shadow text-center text-md-left">
+                        <a class="image" asp-controller="blog" asp-action="details" asp-route-id="@blog.Id">
+                            <img src="~/Uploads/Images/@blog.Image" alt="Latest News" class="img-responsive">
+                        </a>
+                        <div class="news_desc">
+                            <h3 class="text-capitalize font-normal darkcolor"><a href="blog-detail.html">@blog.Title</a></h3>
+                            <ul class="meta-tags top20 bottom20">
+                                <li><a href="#."><i class="fas fa-calendar-alt"></i>@blog.AddedDate.ToString("MMMM dd")</a></li>
+                                <li><a href="#."> <i class="far fa-user"></i> @blog.User.Name </a></li>
+                                <li><a href="#."><i class="far fa-comment-dots"></i>@blog.Comments.Count </a></li>
+                            </ul>
+                            <p class="bottom35">@(blog.Content.Length>100? blog.Content.Substring(0,150):blog.Content)</p>
+                            <a asp-controller="blog" asp-action="details" asp-route-id="@blog.Id" class="button gradient-btn">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <!--Pagination-->
+                <ul class="pagination justify-content-center top40">
+                    <li class="page-item"><a class="page-link disabled" href="#."><i class="fa fa-angle-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#.">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#.">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#.">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#."><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Our Blogs Ends-->

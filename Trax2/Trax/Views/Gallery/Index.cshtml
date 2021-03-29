@@ -1,0 +1,91 @@
+﻿@model VmGallery
+@{
+    ViewData["Title"] = "Index";
+    VmBreadCrum vmBreadCrum = new VmBreadCrum() { Desc = "Gallery", Page = "Gallery" };
+}
+<!--Page Header-->
+<section id="main-banner-page" class="position-relative page-header gallery-header parallax section-nav-smooth">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="page-titles whitecolor text-center padding_top padding_bottom">
+                    @foreach (var item in Model.Universals.Where(u => u.Section == "GalleryHeader"))
+                    {
+                        <h2 class="font-xlight">@item.UpTitle</h2>
+                        <h2 class="font-bold">@item.Title</h2>
+                        <h2 class="font-xlight">@item.Subtitle</h2>
+                        <h3 class="font-light pt-2">@item.Desc</h3>
+                    }
+                </div>
+            </div>
+        </div>
+        <partial name="_BreadCrumPartial" model="vmBreadCrum" />
+    </div>
+</section>
+<!--Page Header ends -->
+<!-- Gallery -->
+<section id="gallery" class="bglight position-relative padding_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center wow fadeIn top15" data-wow-delay="300ms">
+                <h2 class="heading bottom45 darkcolor font-light2">
+                    Our <span class="font-normal">Gallery</span>
+                    <span class="divider-center"></span>
+                </h2>
+                <div class="col-md-8 offset-md-2 bottom40">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div id="mosaic-filter" class="cbp-l-filters bottom30 wow fadeIn text-center" data-wow-delay="350ms">
+                    <div data-filter="*" class="cbp-filter-item">
+                        <span>All</span>
+                    </div>
+                    @foreach (var item in Model.GalleryTypes)
+                    {
+                        <div data-filter=".@item.Name" class="cbp-filter-item">
+                            <span>@item.Name</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div id="grid-mosaic" class="*cbp cbp-l-grid-mosaic-flat*">
+                    <!--Items-->
+
+                    @foreach (var item in Model.Galleries)
+                    {
+                        <div class="cbp-item @foreach (var item2 in Model.GalleryToTypes.Where(w => w.GalleryId == item.Id)){@(item2.GallaryType.Name.ToLower() + " ")}">
+                            <img src="http://themesindustry.com/html/trax-2020/images/@item.Image" alt="">
+                            <div class="gallery-hvr whitecolor">
+                                <div class="center-box">
+                                    <a href="http://themesindustry.com/html/trax-2020/images/@item.Image" class="opens" data-fancybox="gallery" title="Zoom In"> <i class="fa fa-search-plus"></i></a>
+                                    <a href="gallery-detail.html" class="opens" title="View Details"> <i class="fas fa-link"></i></a>
+                                    <h4 class="w-100">@item.Name</h4>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-lg-12">
+                    <!--Load more itema from another html file using ajax-->
+                    <div id="js-loadMore-mosaic" class="cbp-l-loadMore-button ">
+                        <a href="http://themesindustry.com/html/trax-2020/load-more.html" class="cbp-l-loadMore-link button py-1 button gradient-btn whitecolor transition-3" rel="nofollow">
+                            <span class="cbp-l-loadMore-defaultText">LOAD MORE (<span class="cbp-l-loadMore-loadItems">13</span>)</span>
+                            <span class="cbp-l-loadMore-loadingText">LOADING <i class="fas fa-spinner fa-spin"></i></span>
+                            <span class="cbp-l-loadMore-noMoreLoading d-none">NO MORE WORKS</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gallery ends -->
+
+@section MyScript
+{
+    <!--Cubefolio Gallery-->
+    <script src="~/js/jquery.cubeportfolio.min.js"></script>
+}
